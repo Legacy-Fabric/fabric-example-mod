@@ -9,8 +9,8 @@
     "Me!"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://legacyfabric.net/",
+    "sources": "https://github.com/Legacy-Fabric/fabric-example-mod"
   },
 
   "license": "CC0-1.0",
@@ -27,9 +27,7 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.7.4"
-  },
-  "suggests": {
-    "flamingo": "*"
+    "fabricloader": ">=0.9.0",
+    "minecraft": "1.8.9"
   }
 }

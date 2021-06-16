@@ -1,6 +1,6 @@
 plugins {
+	id 'fabric-loom' version "0.7-SNAPSHOT" // To use chocoloom, change the version to a commit hash
 	id 'maven-publish'
-	id 'fabric-loom' version "0.6-SNAPSHOT" // To use chocoloom, change the version to a commit hash
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -12,8 +12,8 @@ group = project.maven_group
 
 repositories {
 	maven {
-		name = 'legacy-fabric'
-		url = 'https://maven.legacyfabric.net'
+		name = "legacy-fabric"
+		url = "https://maven.legacyfabric.net"
 	}
 }
 
@@ -32,9 +32,8 @@ dependencies {
 	modImplementation ("net.fabricmc:fabric-loader-1.8.9:${project.loader_version}") {
 		exclude module: "guava"
 	}
-	// Fabric API. Most mods will need this, so it's included by default. If you know for a fact you don't, it's not required and can be safely removed.
+	// Most mods will need this, so it's included by default. If you are sure you don't need it, it's not required and can be safely removed.
 	modImplementation "net.legacyfabric.legacy-fabric-api:legacy-fabric-api:${fabric_version}"
-
 
 	// Hacks that make mac os work
 	if (System.getProperty("os.name").toLowerCase().contains("mac")) {
@@ -60,13 +59,8 @@ if (System.getProperty("os.name").toLowerCase().contains("mac")) {
 processResources {
 	inputs.property "version", project.version
 
-	from(sourceSets.main.resources.srcDirs) {
-		include "fabric.mod.json"
+	filesMatching("fabric.mod.json") {
 		expand "version": project.version
-	}
-
-	from(sourceSets.main.resources.srcDirs) {
-		exclude "fabric.mod.json"
 	}
 }
 
