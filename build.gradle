@@ -32,7 +32,9 @@ dependencies {
 	modImplementation ("net.fabricmc:fabric-loader-1.8.9:${project.loader_version}") {
 		exclude module: "guava"
 	}
-	// Most mods will need this, so it's included by default. If you are sure you don't need it, it's not required and can be safely removed.
+
+	// Fabric API provides hooks for events, item registration, and more. As most mods will need this, it's included by default. 
+	// If you know for a fact you don't, it's not required and can be safely removed.
 	modImplementation "net.legacyfabric.legacy-fabric-api:legacy-fabric-api:${fabric_version}"
 
 	// Hacks that make mac os work
