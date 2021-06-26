@@ -29,5 +29,8 @@
   "depends": {
     "fabricloader": ">=0.9.0",
     "minecraft": "1.8.9"
+  },
+  "suggests": {
+    "flamingo": "*"    
   }
 }
