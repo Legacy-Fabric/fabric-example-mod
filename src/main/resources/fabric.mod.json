@@ -31,6 +31,6 @@
     "minecraft": "1.8.9"
   },
   "suggests": {
-    "flamingo": "*"    
+    "flamingo": "*"
   }
 }
