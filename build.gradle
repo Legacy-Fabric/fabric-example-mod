@@ -1,6 +1,6 @@
 plugins {
 	id 'maven-publish'
-	id 'fabric-loom' version "0.7-SNAPSHOT"
+	id 'fabric-loom' version "0.10-SNAPSHOT"
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -17,10 +17,8 @@ repositories {
 	}
 }
 
-minecraft {
-	intermediaryUrl = {
-		return "https://maven.legacyfabric.net/net/fabricmc/intermediary/" + it + "/intermediary-" + it + "-v2.jar";
-	}
+loom {
+	setIntermediaryUrl('https://maven.legacyfabric.net/net/fabricmc/intermediary/%1$s/intermediary-%1$s-v2.jar');
 }
 
 dependencies {
@@ -35,6 +33,10 @@ dependencies {
 		implementation 'org.lwjgl.lwjgl:lwjgl_util:2.9.4-nightly-20150209'
 		implementation 'org.lwjgl.lwjgl:lwjgl:2.9.4-nightly-20150209'
 		implementation 'org.lwjgl.lwjgl:lwjgl-platform:2.9.4-nightly-20150209'
+	} else {
+		implementation 'org.lwjgl.lwjgl:lwjgl_util:2.9.0'
+		implementation 'org.lwjgl.lwjgl:lwjgl:2.9.0'
+		implementation 'org.lwjgl.lwjgl:lwjgl-platform:2.9.0'
 	}
 }
 
@@ -48,18 +50,23 @@ if (System.getProperty("os.name").toLowerCase().contains("mac")) {
 			force 'org.lwjgl.lwjgl:lwjgl-platform:2.9.4-nightly-20150209'
 		}
 	}
+} else {
+	configurations.all {
+		resolutionStrategy {
+			dependencySubstitution {
+				substitute module('org.lwjgl.lwjgl:lwjgl_util:2.9.1-nightly-20130708-debug3') with module('org.lwjgl.lwjgl:lwjgl_util:2.9.0')
+				substitute module('org.lwjgl.lwjgl:lwjgl:2.9.1-nightly-20130708-debug3') with module('org.lwjgl.lwjgl:lwjgl:2.9.0')
+			}
+			force 'org.lwjgl.lwjgl:lwjgl-platform:2.9.0'
+		}
+	}
 }
 
 processResources {
 	inputs.property "version", project.version
 
-	from(sourceSets.main.resources.srcDirs) {
-		include "fabric.mod.json"
+	filesMatching("fabric.mod.json") {
 		expand "version": project.version
-	}
-
-	from(sourceSets.main.resources.srcDirs) {
-		exclude "fabric.mod.json"
 	}
 }
 
