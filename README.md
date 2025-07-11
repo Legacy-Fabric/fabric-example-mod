@@ -1,4 +1,4 @@
-# Fabric Example Mod
+# Legacy Fabric Example Mod
 
 - [Quick start guide](#quick-start-guide)
   - [Introduction to the folder structure](#introduction-to-the-folder-structure)

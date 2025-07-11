@@ -16,14 +16,14 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "net.legacyfabric.example.ExampleMod"
     ]
   },
   "mixins": [
     "modid.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14.19",
+    "fabricloader": ">=0.16.0",
     "minecraft": "1.8.9"
   },
   "suggests": {

@@ -4,32 +4,27 @@
 
 name: Build
 
-on: [push, pull_request]
+on: [pull_request, push]
 
 jobs:
   build:
-    strategy:
-      matrix:
-        java: [
-          "17", # Old LTS
-          "21" # Current LTS
-          ]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: gradle/wrapper-validation-action@v3
-      - name: Setup Java JDK
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: validate gradle wrapper
+        uses: gradle/actions/wrapper-validation@v4
+      - name: setup jdk
         uses: actions/setup-java@v4
         with:
+          java-version: "21"
           distribution: "temurin"
-          java-version: ${{ matrix.java }}
-      - name: Grant execute permission
+      - name: make gradle wrapper executable
         run: chmod +x ./gradlew
-      - name: Build with Gradle
+      - name: build
         run: ./gradlew build
-      - if: matrix.java == '17'
-        name: Upload a Build Artifact
+      - name: capture build artifacts
         uses: actions/upload-artifact@v4
-        with: 
-          name: modid
-          path: build/libs/*.jar
+        with:
+          name: Artifacts
+          path: build/libs/
