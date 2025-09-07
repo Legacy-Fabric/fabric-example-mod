@@ -50,8 +50,8 @@ dependencies {
 
 	// Legacy Fabric API provides hooks for events, item registration, and more. As most mods will need this, it's included by default.
 	// If you know for a fact you don't, it's not required and can be safely removed.
-	// As of September 2024, available for MC 1.6.4, 1.7.10, 1.8, 1.8.9, 1.9.4, 1.10.2, 1.11.2 and 1.12.2.
-	// As of September 2024, available only for intermediary generation 1.
+	// As of September 2025, available only for intermediary generation 1.
+	// Check availability for your MC version at https://legacyfabric.net/usage.html
 	modImplementation "net.legacyfabric.legacy-fabric-api:legacy-fabric-api:${project.fabric_version}"
 
 	// You can retrieve a specific api module using this notation.
