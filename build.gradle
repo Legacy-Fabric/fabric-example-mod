@@ -53,6 +53,8 @@ dependencies {
 	// As of September 2025, available only for intermediary generation 1.
 	// Check availability for your MC version at https://legacyfabric.net/usage.html
 	modImplementation "net.legacyfabric.legacy-fabric-api:legacy-fabric-api:${project.fabric_version}"
+	// If you use LFAPI with MC 1.3.2, 1.4.7 or 1.5.2, uncomment the next line
+	// implementation('com.google.code.gson:gson:2.8.9')
 
 	// You can retrieve a specific api module using this notation.
 	// modImplementation(legacy.apiModule("legacy-fabric-item-groups-v1", project.fabric_version))
