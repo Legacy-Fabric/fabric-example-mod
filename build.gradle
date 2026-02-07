@@ -1,5 +1,5 @@
 plugins {
-	id "fabric-loom" version "${loom_version}"
+	id "net.fabricmc.fabric-loom-remap" version "${loom_version}"
 	id "legacy-looming" version "${loom_version}" // Version must be the same as fabric-loom's
 	id "maven-publish"
 }
